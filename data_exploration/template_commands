@@ -1,0 +1,82 @@
+python preprocessing run_selector_parallel_min --train_data_path=/mnt/data/datasets/newspapers/guardian/train_test/train_all.csv --partitions=8 --n_partition=0
+
+
+python preprocessing collect_texts --raw_comments_path=/mnt/data/datasets/newspapers/guardian/c_comments.csv --selection_path=/mnt/data/datasets/newspapers/guardian/train_test/train_all.csv --offset_path=/mnt/data/datasets/newspapers/guardian/train_test/offsets/c_comments_offsets.csv --output_path=/mnt/data/datasets/newspapers/guardian/train_test/train_all_texts.csv
+
+
+python preprocessing tfidf --dictionary_path=/mnt/data/vikuen/baselines/recommendation/bag_of_words/guardian.dict --text_path=/mnt/data/datasets/newspapers/guardian/train_test/train_all_texts_tokenized.csv --corpus_output_path=/mnt/data/vikuen/baselines/recommendation/bag_of_words/corpus_guardian.mm --output_path=/mnt/data/vikuen/baselines/recommendation/bag_of_words/tfidf_guardian.model
+
+
+python preprocessing collect_texts --raw_comments_path=/mnt/data/datasets/newspapers/guardian/c_comments.csv --selection_path=/mnt/data/datasets/newspapers/guardian/train_test/train_test_bag_of_words.csv --offset_path=/mnt/data/datasets/newspapers/guardian/train_test/offsets/c_comments_offsets.csv --output_path=/mnt/data/datasets/newspapers/guardian/train_test/train_test_bag_of_words_texts.csv
+
+
+python preprocessing tokenize_texts --input_path=/mnt/data/datasets/newspapers/guardian/train_test/train_test_bag_of_words_texts.csv --output_path=/mnt/data/datasets/newspapers/guardian/train_test/train_test_bag_of_words_texts_tokenized.csv
+
+
+python preprocessing make_dictionary --tokenized_path=/mnt/data/datasets/newspapers/guardian/train_test/train_test_bag_of_words_texts_tokenized.csv --output_path=/mnt/data/vikuen/baselines/recommendation/guardian.dict
+
+
+python preprocessing tfidf --dictionary_path=/mnt/data/vikuen/baselines/recommendation/bag_of_words/guardian.dict --text_path=/mnt/data/datasets/newspapers/guardian/train_test/train_all_texts_tokenized.csv --corpus_output_path=/mnt/data/vikuen/baselines/recommendation/bag_of_words/corpus_guardian.mm --output_path=/mnt/data/vikuen/baselines/recommendation/bag_of_words/tfidf_guardian.model
+
+
+python preprocessing run_selector_parallel_min_test --train_data_path=/mnt/data/datasets/newspapers/guardian/train_test/test_all.csv --partitions=4 --n_partition=0
+
+python preprocessing run_selector_negative_paralallel --partitions=12 --n_partition=0 
+
+python preprocessing run_selector_negative_paralallel --partitions=12 --n_partition=0
+
+python preprocessing run_selector_negative_paralallel_test --partitions=8 --n-partition=0
+
+python preprocessing collaborative_filtering_vectors --raw_input=/mnt/data/vikuen/baselines/recommendation/collaborative_filtering/user_vectors.csv --output_path=/mnt/data/vikuen/baselines/recommendation/collaborative_filtering/offsets.csv
+
+python baselines/collaborative_filtering.py run --dataset=test --partitions=4 --n_partition=0
+
+python preprocessing run_selector_parallel_min_validation --partitions=6 --n_partition=0
+
+python preprocessing run_selector_negative_paralallel_test --partitions=6 --n_partition=0
+
+python preprocessing run_selector_parallel_min_test --partitions=6 --n_partition=0
+
+python preprocessing run_selector_negative_paralallel_test --partitions=12 --n_partition=0
+
+python preprocessing run_selector_negative_paralallel_validation --partitions=10 --n_partition=0
+
+TODO:
+import pickle
+pickle.dump( texts_dict, open( "/mnt/data/datasets/newspapers/guardian/train_test/train_text_tokenized_dict.p", "wb" ) )
+
+
+python baselines/bag_of_words.py run --dataset=test --partitions=5 --n_partition=0
+
+
+python preprocessing run_selector_parallel_min --partitions=4 --n_partition=0
+
+python preprocessing run_selector_parallel_min_test --partitions=4 --n_partition=0
+
+python preprocessing run_selector_parallel_min_validation --partitions=4 --n_partition=0
+python preprocessing run_selector_negative_paralallel --partitions=8 --n_partition=0
+
+python preprocessing run_selector_negative_paralallel_test --partitions=8 --n_partition=0
+
+python preprocessing run_selector_negative_paralallel_validation --partitions=8 --n_partition=0
+
+
+
+python preprocessing collect_texts --raw_comments_path=/mnt/data/datasets/newspapers/guardian/c_comments.csv --selection_path=/mnt/data/vikuen/data/guardian/train-test-val-set_all.csv --offset_path=/mnt/data/datasets/newspapers/guardian/train_test/offsets/c_comments_offsets.csv --output_path=/mnt/data/vikuen/data/guardian/train_test_val-texts.csv
+
+python preprocessing tokenize_texts --input_path=/mnt/data/vikuen/data/guardian/train_test_val-texts.csv --output_path=/mnt/data/vikuen/data/guardian/bag_of_words/tokenized_texts.csv
+
+python preprocessing make_dictionary --tokenized_path=/mnt/data/vikuen/data/guardian/bag_of_words/tokenized_texts.csv --output_path=/mnt/data/vikuen/data/guardian/bag_of_words/guardian.dict
+
+python preprocessing tfidf --dictionary_path=/mnt/data/vikuen/data/guardian/bag_of_words/guardian.dict --text_path=/mnt/data/vikuen/data/guardian/bag_of_words/tokenized_texts.csv --corpus_output_path=/mnt/data/vikuen/data/guardian/bag_of_words/corpus_guardian.mm --output_path=/mnt/data/vikuen/data/guardian/bag_of_words/tfidf_guardian.model
+
+python baselines/bag_of_words.py run --dataset=test --partitions=3 --n_partition=0
+
+python baselines/random_rec.py run --dataset=test --partitions=1 --n_partition=0
+
+./snap/examples/node2vec/node2vec -i:/mnt/data/vikuen/data/guardian/graph/graph_last10comments.edgelist -o:/mnt/data/vikuen/data/guardian/graph/embeddings/graph_last10comments.emb 
+
+  ./snap/examples/node2vec/node2vec -i:/mnt/data/vikuen/data/guardian/graph/graph_last10comments.edgelist -o:/mnt/data/vikuen/data/guardian/graph/embeddings/graph_last10comments.emb
+
+
+python preprocessing run_selector_parallel_min --partitions=6 --n_partition=0

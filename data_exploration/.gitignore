@@ -1,0 +1,6 @@
+dask-worker-space/
+data/
+
+.venv/
+.ipynp_checkpoints/
+.vscode/
