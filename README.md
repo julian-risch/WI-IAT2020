@@ -20,3 +20,25 @@ There are this `README.md`, a `requirements.txt` and seven subdirectories:
 * `models` contains the implementation of the neural network models and the community graph
 * `preprocessing` contains the preprocessing methods, such as the selection of negative samples or the tf-idf model
 * `torchtrainer-master` is used for callbacks during the training process: [torchtrainer](https://pypi.org/project/torchtrainer/)
+
+# Dataset
+We provide the comment ids of the training, validation and test datasets. There are positive and negative samples describing the state of discussions (at a particular point in time) where a particular user did or did not comment. 
+
+Example row from one of the csv files:
+```author_id,article_id,max_timestamp,comment_ids```
+```44041,72032,2017-06-12 19:08:29+00:00,"[100252639, 100239810, 100224652, 100180729]"``` 
+
+```author_id``` identifies the user, ```article_id``` identifies the news article discussion, ```max_timestamp``` is the point in time described by the row,
+```comment_ids``` is the list of comment ids posted in the discussion until the point in time given by ```max_timestamp```.
+
+The csv file contains either only positive or only negative samples. The example is from the file with negative samples. Therefore, the row describes a situation where the user with id ```author_id``` did not comment on the discussion on article ```article_id``` with the comments ```comment_ids```.  The discussion where the user did comment is in the file with the positive samples.
+
+For easier processing, the files are split into partitions, e.g., ```partition-0_val.csv```, ```partition-2_val.csv```,  ```partition-3_val.csv```, ...
+
+The zipped files can be downloaded here (1.5GB):
+* [The Guardian training file](https://owncloud.hpi.de/s/Sm6CgQtltP0OjaC)
+* [The Guardian validation file](https://owncloud.hpi.de/s/IqxKo0o4HY3YSfZ)
+* [The Guardian test file](https://owncloud.hpi.de/s/Fr6Jfw7PnohflhM)
+* [Daily Mail training file](https://owncloud.hpi.de/s/PsPKNxy08IAJjiW)
+* [Daily Mail validation file](https://owncloud.hpi.de/s/ZcR69D5IqBziT54)
+* [Daily Mail test file](https://owncloud.hpi.de/s/oaay9KnKBNpPBvb)
