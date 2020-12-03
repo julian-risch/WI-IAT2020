@@ -1,6 +1,6 @@
 # WI-IAT2020
 
-This repository contains code that is associated with our paper accepted for publication at the IEEE/WIC/ACM International Joint Conference On Web Intelligence And Intelligent Agent Technology (WI-IAT '20). The paper is titled *HyCoNN: Hybrid Cooperative Neural Networks for Personalized News Discussion Recommendation*. It is based on a Master's thesis by Victor Künstler, co-supervised by Julian Risch and Ralf Krestel.
+This repository contains code that is associated with our paper accepted for publication at the IEEE/WIC/ACM International Joint Conference On Web Intelligence And Intelligent Agent Technology (WI-IAT '20). The paper is titled *HyCoNN: Hybrid Cooperative Neural Networks for Personalized News Discussion Recommendation*. It is based on a Master's thesis by Victor Künstler, co-supervised by Julian Risch and Ralf Krestel. A video presentation is available on [YouTube](https://youtu.be/F3w81B1DQw4).
 
 # Citation
 If you use our work, please cite our upcoming paper [**HyCoNN: Hybrid Cooperative Neural Networks for Personalized News Discussion Recommendation**](https://hpi.de/fileadmin/user_upload/fachgebiete/naumann/people/risch/risch2020hyconn.pdf) accepted for publication at [WI-IAT'20](http://wi2020.vcrab.com.au/) as follows:
