@@ -9,7 +9,11 @@ If you use our work, please cite our upcoming paper [**HyCoNN: Hybrid Cooperativ
     title = {HyCoNN: Hybrid Cooperative Neural Networks for Personalized News Discussion Recommendation},
     author = {Risch, Julian and K{\"u}nstler, Victor and Krestel, Ralf},
     booktitle = {Proceedings of the International Joint Conferences on Web Intelligence and Intelligent Agent Technologies (WI-IAT)},
-    year = {2020}
+    pages = {41--48},
+    year = {2020},
+    publisher = {IEEE Computer Society},
+    doi = {10.1109/WIIAT50758.2020.00011},
+    url = {https://doi.ieeecomputersociety.org/10.1109/WIIAT50758.2020.00011},
     }
 
 There are this `README.md`, a `requirements.txt` and seven subdirectories:
